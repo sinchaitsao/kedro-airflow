@@ -83,14 +83,17 @@ def process_context(data_catalog, **airflow_context):
     # or add just the ones you need into Kedro parameters
     parameters = data_catalog.load("parameters")
     parameters["airflow_ds"] = airflow_context["ds"]
-    data_catalog.load("parameters", parameters)
+    data_catalog.save("parameters", parameters)
 
     return data_catalog
 
 
 # Construct a DAG and then call into Kedro to have the operators constructed
 dag = DAG(
-    slugify("{{ project_name }}"), default_args=default_args, schedule_interval=None,
+    slugify("{{ project_name }}"),
+    default_args=default_args,
+    schedule_interval=None,
+    catchup=False
 )
 
 {% if context_compatibility_mode %}

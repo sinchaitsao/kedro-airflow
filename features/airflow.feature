@@ -29,13 +29,21 @@
 
 
 Feature: Airflow
-  Scenario: Convert pipeline to Airflow
+
+  Background:
     Given I have initialized Airflow
     And I have prepared a config file
     And I have run a non-interactive kedro new
     And I have prepared a data catalog
     And I have executed the kedro command "airflow create"
     And I have executed the kedro command "airflow deploy"
+
+  Scenario: Print a list of tasks
     When I execute the airflow command "list_tasks project-dummy"
     Then I should get a successful exit code
     And I should get a message including "report-accuracy-example-predictions-example-test-y-none"
+
+  Scenario: Run Airflow task locally
+    When I execute the airflow command "test project-dummy split-data-example-iris-data-params-example-test-data-ratio-example-test-x-example-test-y-example-train-x-example-train-y 2016-06-01T00:00:00+00:00"
+    Then I should get a successful exit code
+    And I should get a message including "Loading data from `parameters`"

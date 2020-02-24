@@ -30,7 +30,7 @@
 """Behave step definitions for the cli_scenarios feature."""
 
 import yaml
-from behave import given, step, then
+from behave import given, then, when
 
 from features.steps.sh_run import run
 
@@ -50,27 +50,27 @@ def prepare_catalog(context):
     config = {
         "example_train_x": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_train_x.pkl",
+            "filepath": "data/02_intermediate/example_train_x.pkl",
         },
         "example_train_y": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_train_y.pkl",
+            "filepath": "data/02_intermediate/example_train_y.pkl",
         },
         "example_test_x": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_test_x.pkl",
+            "filepath": "data/02_intermediate/example_test_x.pkl",
         },
         "example_test_y": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_test_y.pkl",
+            "filepath": "data/02_intermediate/example_test_y.pkl",
         },
         "example_model": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_model.pkl",
+            "filepath": "data/02_intermediate/example_model.pkl",
         },
         "example_predictions": {
             "type": "PickleLocalDataSet",
-            "filepath": "example_predictions.pkl",
+            "filepath": "data/02_intermediate/example_predictions.pkl",
         },
     }
     catalog_file = context.root_project_dir / "conf" / "local" / "catalog.yml"
@@ -78,7 +78,7 @@ def prepare_catalog(context):
         yaml.dump(config, catalog_file, default_flow_style=False)
 
 
-@step('I execute the airflow command "{command}"')
+@when('I execute the airflow command "{command}"')
 def airflow_command(context, command):
     split_command = command.split()
     cmd = [context.airflow] + split_command
@@ -95,7 +95,7 @@ def check_message_printed(context, msg):
     )
 
 
-@step("I have prepared a config file")
+@given("I have prepared a config file")
 def create_configuration_file(context):
     """Behave step to create a temporary config file
     (given the existing temp directory)
@@ -139,7 +139,7 @@ def exec_make_target_checked(context, command):
         assert False
 
 
-@step("I should get a successful exit code")
+@then("I should get a successful exit code")
 def check_status_code(context):
     if context.result.returncode != OK_EXIT_CODE:
         print(context.result.stdout)
