@@ -6,6 +6,9 @@
 * Fixed a bug that was logging unnecessary Kedro messages when running Airflow commands.
 * Fixed a bug for processing Airflow context in DAG template.
 
+## Thanks for supporting contributions
+[@pitterb](https://github.com/pitterb)
+
 # Release 0.2.2
 
 ## Major features and improvements
