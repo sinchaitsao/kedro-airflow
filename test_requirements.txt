@@ -2,12 +2,11 @@
 behave
 black==v19.10.b0; python_version >= '3.6'
 flake8
-gitdb2==3.0.0 # pin trufflehog dependency to get it working for now https://github.com/dxa4481/truffleHog/issues/200
 pre-commit>=1.17.0, <2.0
 psutil
 pylint>=2.4.4, <3.0
 pytest
 pytest-cov
 pytest-mock
-trufflehog>=2.0.99, <3.0
+trufflehog>=2.1.0, <3.0
 wheel
