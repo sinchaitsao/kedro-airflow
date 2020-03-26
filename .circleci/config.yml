@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  build_35: &DEFAULT
+  build_36: &DEFAULT
     machine:
       # Don't use 2018 image: https://discuss.circleci.com/t/24639/18
       image: circleci/classic:201711-01
       docker_layer_caching: true
     environment:
-      CONDA_ENV_PY_VERSION: 3.5.4
+      CONDA_ENV_PY_VERSION: "3.6"
     steps:
       - checkout
       - run:
@@ -52,10 +52,6 @@ jobs:
           command: |
             make legal
 
-  build_36:
-    <<: *DEFAULT
-    environment:
-      CONDA_ENV_PY_VERSION: 3.6
   build_37:
     <<: *DEFAULT
     environment:
@@ -65,7 +61,6 @@ workflows:
   version: 2
   regular:
     jobs:
-      - build_35
       - build_36
       - build_37
   daily:
@@ -78,6 +73,5 @@ workflows:
                 - develop
                 - master
     jobs:
-      - build_35
       - build_36
       - build_37

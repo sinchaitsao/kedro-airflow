@@ -52,7 +52,7 @@ def before_all(context):
         assert res.returncode == 0
 
     # make a venv
-    context.venv_dir = Path(create_new_venv())
+    context.venv_dir = create_new_venv()
 
     # note the locations of some useful stuff
     # this is because exe resolution in supbrocess doens't respect a passed env
