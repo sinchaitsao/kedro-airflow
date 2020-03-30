@@ -46,6 +46,7 @@ class AirflowRunner(AbstractRunner):
     be used to convert the ``Pipeline`` into Airflow operators.
     """
 
+    # pylint: disable=super-init-not-called
     def __init__(self, dag, process_context, operator_arguments):
         self._dag = dag
         self._process_context = process_context
