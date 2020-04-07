@@ -27,8 +27,7 @@
 # limitations under the License.
 
 
-"""``AirflowRunner`` is an ``AbstractRunner`` implementation. It can
-be used to convert the ``Pipeline`` into Airflow operators.
+"""``AirflowRunner`` is used to convert the ``Pipeline`` into Airflow operators.
 """
 
 from typing import Callable
@@ -37,16 +36,14 @@ from airflow.operators.python_operator import PythonOperator
 from kedro.io import DataCatalog, MemoryDataSet
 from kedro.pipeline import Pipeline
 from kedro.pipeline.node import Node
-from kedro.runner import AbstractRunner, run_node
+from kedro.runner import run_node
 from slugify import slugify
 
 
-class AirflowRunner(AbstractRunner):
-    """``AirflowRunner`` is an ``AbstractRunner`` implementation. It can
-    be used to convert the ``Pipeline`` into Airflow operators.
+class AirflowRunner:
+    """``AirflowRunner`` is used to convert the ``Pipeline`` into Airflow operators.
     """
 
-    # pylint: disable=super-init-not-called
     def __init__(self, dag, process_context, operator_arguments):
         self._dag = dag
         self._process_context = process_context
@@ -75,7 +72,7 @@ class AirflowRunner(AbstractRunner):
 
     def create_default_data_set(
         self, ds_name: str, max_loads: int = None
-    ):  # pylint: disable=arguments-differ
+    ):  # pylint: disable=no-self-use
         """Factory method for creating the default data set for the runner.
 
         Args:
