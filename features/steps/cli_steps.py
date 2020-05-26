@@ -49,27 +49,27 @@ def init_airflow(context):
 def prepare_catalog(context):
     config = {
         "example_train_x": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_train_x.pkl",
         },
         "example_train_y": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_train_y.pkl",
         },
         "example_test_x": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_test_x.pkl",
         },
         "example_test_y": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_test_y.pkl",
         },
         "example_model": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_model.pkl",
         },
         "example_predictions": {
-            "type": "PickleLocalDataSet",
+            "type": "pickle.PickleDataSet",
             "filepath": "data/02_intermediate/example_predictions.pkl",
         },
     }
