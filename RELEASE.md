@@ -1,7 +1,8 @@
 # Upcoming release
 
 ## Major features and improvements
-* Drop support for Python 3.5.
+* Dropped support for Python 3.5.
+* Added support for Python 3.8.
 * Changed default DAG schedule interval to None.
 * Changed default DAG catchup to be False
 * Fixed a bug that was logging unnecessary Kedro messages when running Airflow commands.
